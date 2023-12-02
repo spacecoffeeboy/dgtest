@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/home/login.js"></script>
+    <script src="/js/home/login.js" defer></script>
     <title>Login Form</title>
 </head>
 <body>
     <h2>Login</h2>
-    <form action="/login" method="post">
-        <label for="login-email">Email:</label><br>
-        <input placeholder="이메일" type="email" id="login-email" name="email" required><br>
-        <label for="login-password">Password:</label><br>
-        <input type="password" placeholder="비밀번호" id="login-password" name="password" required><br>
-        <input type="submit" value="Login">
-    </form>
+    <input type="text" placeholder="이메일" id="login-email" name="email" required><br>
+    <input type="text" placeholder="비밀번호" id="login-password" name="password" required><br>
+    <button>로그인</button>
 </body>
 </html>

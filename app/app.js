@@ -15,7 +15,8 @@ app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/src/public`));
 
 // use -> 미들웨어 등록 메서드
-app.use("/", home); 
+app.use("/", home);
+
 
 //www.js로 export
 module.exports = app;
