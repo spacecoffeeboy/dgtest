@@ -1,5 +1,7 @@
 "use strict";
 
+const UserStorage = require("../../models/UserStorage")
+
 const output = {
     home: (req, res) =>{
         res.render("home/index")
@@ -10,28 +12,26 @@ const output = {
     },
 };
 
-const users = {
-    email: ["kbj@gmail.com","deeprootedtree1@gmail.com","goh@gmail.com"],
-    pwd:["1234", "12345", "123456"],
-}
 
 const process = {
     login: (req, res) => {
         const email = req.body.email,
                 pwd = req.body.pwd;
+    
+        const users = UserStorage.getUsers("email","pwd");
+
+        const response = {};
         if(users.email.includes(email)) {
             const idx = users.email.indexOf(email);
             if(users.pwd[idx]===pwd){
-            return res.json({
-                success: true,
-            });
+            response.success = true;   
+            return res.json(response);
         }
     }
 
-        return res.json({
-            success: false,
-            msg: "로그인에 실패하셨습니다.",
-        });
+        response.success = false;
+        response.msg = "로그인에 실패하셨습니다."   
+        return res.json(response);
     }
 }
 
