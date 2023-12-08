@@ -1,6 +1,6 @@
 "use strict";
 
-class Userstorage {
+class UserStorage {
     static #users = {
         email: ["kbj@gmail.com","deeprootedtree1@gmail.com","goh@gmail.com"],
         pwd:["1234", "12345", "123456"],
@@ -17,8 +17,20 @@ class Userstorage {
         },{});
         return newUsers;
     };
+    //사용자가 기입한 "email"값을 사용하여 사용자 정보를 가져오는 메서드
+    static getUserInfo(email) {
+        const users = this.#users;
+        const idx= users.email.indexOf(email);
+        const usersKeys=Object.keys(users); // =>[email, pwd, name...]
+        const userInfo = usersKeys.reduce((newUser, info) => {
+            newUser[info] = users[info][idx];
+            return newUser;
+        }, {});
+
+        return userInfo;
+    }
 }
 
 
 
-module.exports = Userstorage;
+module.exports = UserStorage;
