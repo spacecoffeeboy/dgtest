@@ -7,15 +7,21 @@ class User {
     }
     
     login() {
-        const body = this.body;
-        const {email,pwd} = UserStorage.getUserInfo(body.email);
+        const client = this.body;
+        const {email,pwd} = UserStorage.getUserInfo(client.email);
         if (email){
-        if(email=== body.email && pwd === body.pwd) {
+        if(email=== client.email && pwd === client.pwd) {
             return {success: true};
         }
         return{success : false, msg:"비밀번호가 틀렸습니다."};
       }
       return{success : false, msg:"존재하지 않는 아이디입니다."};
+    }
+
+    register() {
+        const client = this.body;
+        const response = UserStorage.save(client);
+        return response;
     }
 }
 
