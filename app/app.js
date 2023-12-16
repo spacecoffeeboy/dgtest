@@ -3,6 +3,8 @@
 //모듈
 const bodyParser = require("body-parser");
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express();
 
 //라우팅

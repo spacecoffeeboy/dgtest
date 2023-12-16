@@ -8,6 +8,7 @@ class User {
     
     async login() {
         const client = this.body;
+        try{
         const {email, pwd} = await UserStorage.getUserInfo(client.email);
 
         if (email){
@@ -17,6 +18,9 @@ class User {
         return{success : false, msg:"비밀번호가 틀렸습니다."};
       }
       return{success : false, msg:"존재하지 않는 아이디입니다."};
+    } catch (err){
+        return {success: false, msg: err};
+    }
     }
 
     async register() {
